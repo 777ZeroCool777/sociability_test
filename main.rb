@@ -29,8 +29,14 @@ puts "\nОтветьте на вопросы"
 # создаю экземпляр теста
 test = Test.new
 
-# вывожу вопросы
-test.show_questions
+# беру вопросы с questions.xml
+test.read_questions_from_xml
 
-# вывожу резульат
-test.show_result
+# вывожу вопросы
+test.ask_questions
+
+# беру результат теста с results.xml
+test.read_results_from_xml
+
+# вывожу результат
+test.show_result_pass?
