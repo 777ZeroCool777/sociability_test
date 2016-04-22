@@ -29,10 +29,13 @@ class Test
   # метод сохраняет массив вопросов в @questions
   def read_questions_from_xml
 
+    begin
+    file_questions = File.open(QUESTIONS_FILE_PATH, "r:utf-8")
+    rescue Errno::ENOENT => e
+      puts "Файл questions.xml не был найден :("
+      abort e.message
+    end
 
-    abort "Файл questions.xml не найден :(" unless File.exist?(QUESTIONS_FILE_PATH)
-
-    file_questions = File.new(QUESTIONS_FILE_PATH, "r:utf-8")
     doc_questions_xml = REXML::Document.new(file_questions)
     file_questions.close
 
@@ -46,11 +49,13 @@ class Test
   def read_results_from_xml
 
     # передаю результаты в парсер
+    begin
+    file_results = File.open(RESULTS_FILE_PATH, "r:utf-8")
+    rescue Errno::ENOENT => e
+      puts "Файл results.xml не был найден :("
+      abort e.message
+    end
 
-    abort "Файл result.xml не найден" unless File.exist?(RESULTS_FILE_PATH)
-
-
-    file_results = File.new(RESULTS_FILE_PATH, "r:utf-8")
     doc_results_xml = REXML::Document.new(file_results)
     file_results.close
 
