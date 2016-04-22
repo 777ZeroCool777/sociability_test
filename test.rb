@@ -2,6 +2,9 @@ require 'rexml/document' # подключаю какой-то парсер
 
 class Test
 
+  attr_reader :results
+  attr_writer :mark
+
   # путь к questions.xml
   QUESTIONS_FILE_PATH = "#{File.dirname(__FILE__)}/data/questions.xml"
 
@@ -10,8 +13,8 @@ class Test
 
   def initialize
     @mark = nil
-    @question = [] # массив с вопросами
-    @result = [] # массив с результатом
+    @questions = [] # массив с вопросами
+    @results = [] # массив с результатом
   end
 
   # метод выводит варианты ответов на экран
@@ -35,7 +38,7 @@ class Test
 
     # Вывожу вопросы
     doc_questions_xml.elements.each('/questions/question') do |elem|
-      @question << elem.text
+      @questions << elem.text
     end
   end
 
@@ -57,7 +60,7 @@ class Test
       when (25..29) then kol_vo = 'result_25-29'
       when (19..24) then kol_vo = 'result_19-24'
       when (14..18) then kol_vo = 'result_14-18'
-      when (9..17) then kol_vo = 'result_9-17'
+      when (9..13) then kol_vo = 'result_9-13'
       when (4..8) then kol_vo = 'result_4-8'
       else
         kol_vo = 'result_less'
@@ -65,7 +68,7 @@ class Test
 
 
     doc_results_xml.elements.each("/results/#{kol_vo}") do |elem|
-      @result << elem.text
+      @results << elem.text
     end
   end
 
@@ -82,9 +85,9 @@ class Test
   # метод выводит вопросы на экран
   def ask_questions
 
-    @mark = 0 # инсцилизирую баллы
+    @mark = 0 # инициализирую баллы
 
-    @question.each do |elem|
+    @questions.each do |elem|
       puts elem
       ask_answers
 
@@ -95,8 +98,8 @@ class Test
     end
   end
 
-  # метод выводит результат теста на экран
-  def show_result_pass?
-    puts @result unless @question.empty?
+  # метод выводит результат теста на экран, если пользователь ответил на вопросы
+  def show_result
+    puts @results unless @questions.empty?
   end
 end

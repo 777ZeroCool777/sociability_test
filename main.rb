@@ -39,4 +39,4 @@ test.ask_questions
 test.read_results_from_xml
 
 # вывожу результат
-test.show_result_pass?
+test.show_result
