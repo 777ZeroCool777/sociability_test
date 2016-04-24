@@ -5,10 +5,10 @@ class Test
   attr_reader :results
 
   # путь к questions.xml
-  QUESTIONS_FILE_PATH = "#{File.dirname(__FILE__)}/lib/questions.xml"
+  QUESTIONS_FILE_PATH = "#{File.dirname(__FILE__)}/data/questions.xml"
 
   # путь к results.xml
-  RESULTS_FILE_PATH = "#{File.dirname(__FILE__)}/lib/results.xml"
+  RESULTS_FILE_PATH = "#{File.dirname(__FILE__)}/data/results.xml"
 
   def initialize
     @mark = nil
@@ -85,7 +85,7 @@ class Test
 
   def ask_questions
 
-    @mark = 0 # инициализирую баллы
+    @mark = 0
 
     @questions.each do |elem|
       puts elem
