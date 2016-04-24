@@ -3,13 +3,12 @@ require 'rexml/document' # подключаю какой-то парсер
 class Test
 
   attr_reader :results
-  attr_writer :mark
 
   # путь к questions.xml
-  QUESTIONS_FILE_PATH = "#{File.dirname(__FILE__)}/data/questions.xml"
+  QUESTIONS_FILE_PATH = "#{File.dirname(__FILE__)}/lib/questions.xml"
 
   # путь к results.xml
-  RESULTS_FILE_PATH = "#{File.dirname(__FILE__)}/data/results.xml"
+  RESULTS_FILE_PATH = "#{File.dirname(__FILE__)}/lib/results.xml"
 
   def initialize
     @mark = nil
@@ -17,13 +16,10 @@ class Test
     @results = [] # массив с результатом
   end
 
-  # метод выводит варианты ответов на экран
   def ask_answers
-    puts "    а) да;
-
-    б) нет;
-
-    в) иногда."
+    puts "    а) да;\n" \
+         "    б) нет;\n" \
+         "    в) иногда."
   end
 
   # метод сохраняет массив вопросов в @questions
@@ -87,7 +83,6 @@ class Test
 
   end
 
-  # метод выводит вопросы на экран
   def ask_questions
 
     @mark = 0 # инициализирую баллы
@@ -103,7 +98,6 @@ class Test
     end
   end
 
-  # метод выводит результат теста на экран, если пользователь ответил на вопросы
   def show_result
     puts @results unless @questions.empty?
   end

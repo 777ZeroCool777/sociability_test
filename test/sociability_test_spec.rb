@@ -11,11 +11,11 @@ end
 
 require 'rspec'
 
-require_relative 'test.rb'
+require_relative '../test.rb'
 
-describe 'update_bla' do
+describe 'Test' do
 
-  # Тестовый сценарий для метода show_result_pass?
+  # Тестовый сценарий для метода show_result
   # если пользователь не отвечал на вопросы - метод возвращает nil
   it 'should do ok for show_result false' do
     test = Test.new
@@ -26,13 +26,11 @@ describe 'update_bla' do
   it 'should do ok for show_result true' do
     test = Test.new
 
-    # достаю вопросы в data/questions.xml
+    # достаю вопросы в lib/questions.xml
     test.read_questions_from_xml
 
-    # накручиваю баллы за тест, мол пользователь отвечал
-    test.mark=(10)
 
-    # беру результаты теста в data/results.xml
+    # беру результаты теста в lib/results.xml
     test.read_results_from_xml
 
     # метод show_result должен вернуть результат
