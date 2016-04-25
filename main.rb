@@ -12,7 +12,7 @@ if (Gem.win_platform?)
 end
 ###
 
-require_relative 'test.rb'
+require_relative 'lib/test.rb'
 
 name = ARGV[0]
 

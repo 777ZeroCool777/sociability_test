@@ -5,10 +5,10 @@ class Test
   attr_reader :results
 
   # путь к questions.xml
-  QUESTIONS_FILE_PATH = "#{File.dirname(__FILE__)}/data/questions.xml"
+  QUESTIONS_FILE_PATH = "#{File.dirname(__FILE__)}/../data/questions.xml"
 
   # путь к results.xml
-  RESULTS_FILE_PATH = "#{File.dirname(__FILE__)}/data/results.xml"
+  RESULTS_FILE_PATH = "#{File.dirname(__FILE__)}/../data/results.xml"
 
   def initialize
     @mark = nil
