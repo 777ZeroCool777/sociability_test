@@ -11,20 +11,27 @@ end
 
 require 'rspec'
 
-require_relative '../test.rb'
+require_relative '../lib/test.rb'
 
 describe 'Test' do
 
   # Тестовый сценарий для метода show_result_pass?
   # если пользователь не отвечал на вопросы - метод возвращает nil
   it 'should do ok for show_result false' do
-    test = Test.new
+
+    # путь к questions.xml
+    QUESTIONS_FILE_PATH = "#{File.dirname(__FILE__)}../../data/questions.xml"
+
+    # путь к results.xml
+    RESULTS_FILE_PATH = "#{File.dirname(__FILE__)}../../data/results.xml"
+
+    test = Test.new(QUESTIONS_FILE_PATH, RESULTS_FILE_PATH)
     expect(test.show_result).to eq nil
   end
 
   # Тестовый сценарий, если пользователь отвечал на вопросы
   it 'should do ok for show_result true' do
-    test = Test.new
+    test = Test.new(QUESTIONS_FILE_PATH, RESULTS_FILE_PATH)
 
     # достаю вопросы в data/questions.xml
     test.read_questions_from_xml

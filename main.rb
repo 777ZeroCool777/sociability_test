@@ -14,6 +14,12 @@ end
 
 require_relative 'lib/test.rb'
 
+# путь к questions.xml
+QUESTIONS_FILE_PATH = "#{File.dirname(__FILE__)}/data/questions.xml"
+
+# путь к results.xml
+RESULTS_FILE_PATH = "#{File.dirname(__FILE__)}/data/results.xml"
+
 name = ARGV[0]
 
 # здороваюсь с пользователем
@@ -27,7 +33,7 @@ puts "\nТест на общительность"
 puts "\nОтветьте на вопросы"
 
 # создаю экземпляр теста
-test = Test.new
+test = Test.new(QUESTIONS_FILE_PATH, RESULTS_FILE_PATH)
 
 # беру вопросы с questions.xml
 test.read_questions_from_xml

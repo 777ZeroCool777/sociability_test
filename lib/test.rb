@@ -4,16 +4,12 @@ class Test
 
   attr_reader :results
 
-  # путь к questions.xml
-  QUESTIONS_FILE_PATH = "#{File.dirname(__FILE__)}/../data/questions.xml"
-
-  # путь к results.xml
-  RESULTS_FILE_PATH = "#{File.dirname(__FILE__)}/../data/results.xml"
-
-  def initialize
+  def initialize(questions_xml, results_xml )
     @mark = nil
     @questions = [] # массив с вопросами
     @results = [] # массив с результатом
+    @questions_xml = questions_xml
+    @results_xml = results_xml
   end
 
   def ask_answers
@@ -26,7 +22,7 @@ class Test
   def read_questions_from_xml
 
     begin
-    file_questions = File.open(QUESTIONS_FILE_PATH, "r:utf-8")
+    file_questions = File.open(@questions_xml, "r:utf-8")
     rescue Errno::ENOENT => e
       puts "Файл questions.xml не был найден :("
       abort e.message
@@ -46,7 +42,7 @@ class Test
 
     # передаю результаты в парсер
     begin
-    file_results = File.open(RESULTS_FILE_PATH, "r:utf-8")
+    file_results = File.open(@results_xml, "r:utf-8")
     rescue Errno::ENOENT => e
       puts "Файл results.xml не был найден :("
       abort e.message
